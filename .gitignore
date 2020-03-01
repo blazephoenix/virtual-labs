@@ -4,7 +4,7 @@
 *.pyc
 *.pyo
 env/
-venv/
+venv
 env*
 dist/
 build/
@@ -18,6 +18,8 @@ _mailinglist
 docs/_build/
 .vscode
 vlabs/static/labs
+__pycache__
+
 # Coverage reports
 htmlcov/
 .coverage
