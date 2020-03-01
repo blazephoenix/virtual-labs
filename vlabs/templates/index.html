@@ -1,0 +1,70 @@
+{% extends 'layout/base.html' %}
+{% block main %}
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center black-text">Welcome to Virtual Labs</h1>
+      <div class="row center">
+        <p class="header col s12 light">
+          Virtual Labs will provide to the students the result of an experiment by one of the following methods (or possibly a combination). 
+          Modeling the physical phenomenon by a set of equations and carrying out simulations to yield the result of the particular experiment. 
+          Providing measured data for virtual lab experiments corresponding to the data previously obtained by measurements on an actual system. 
+          Remotely triggering an experiment in an actual lab and providing the student the result of the experiment through the computer interface.<br> 
+          This would entail carrying out the actual lab experiment remotely.
+        </p>
+      </div>
+      <div class="row center">
+        <a href="{{ url_for('labs') }}" id="download-button" class="btn-large waves-effect waves-light grey darken-4">Get Started</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+      <h3 class="center black-text">Objectives</h3>
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center materialize-red-text"><i class="medium material-icons">computer</i></h2>
+            <h5 class="center">Remote access</h5>
+
+            <p class="light center-align">To provide remote-access to Labs in various disciplines of Science and Engineering. These Virtual Labs would cater to students at the undergraduate level, post graduate level as well as to research scholars.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center materialize-red-text"><i class="medium material-icons">lightbulb_outline</i></h2>
+            <h5 class="center">Arouse curiosity</h5>
+
+            <p class="light center-align">To enthuse students to conduct experiments by the arousing their curiosity. This would help them in learning basic and advanced concepts through remote experimentation.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center materialize-red-text"><i class="medium material-icons">timeline</i></h2>
+            <h5 class="center">LMS system</h5>
+
+            <p class="light center-align">To provide a complete Learning Management System around the Virtual Labs where the students can avail the various tools for learning, including additional web-resources, video-lectures, animated demonstrations and self evaluation.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center materialize-red-text"><i class="medium material-icons">school</i></h2>
+            <h5 class="center">Democratize education</h5>
+
+            <p class="light center-align">To share costly equipment and resources, which are otherwise available to limited number of users due to constraints on time and geographical distances.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RAIT Virtual Labs - {% block title %}Home{% endblock %}</title>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/material-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}"  media="screen,projection"/>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}"> -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
+    <script src="{{ url_for('static', filename='js/chart.min.js') }}"></script>
+</head>
+<body>
+    {% include 'includes/header.html' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="container">
+                    <div class="toast-container" style="position: absolute; z-index: 100000; width: 100vw; top: -8%; left:0%;">
+                        <div class="toast {{ category }}">{{ message }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% block main %}
+    {% endblock %}
+    {% include 'includes/footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bin/materialize.min.js') }}"></script>
+    <script>
+        M.AutoInit();
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('.toast-container').fadeOut();}, 2500);
+        });
+    </script>
+</body>
+</html>

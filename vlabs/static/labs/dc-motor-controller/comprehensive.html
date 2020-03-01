@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel = "stylesheet" href = "{{url_for('static',filename='comprehensive.css')}}">
+<script type = "text/javascript" src = "{{url_for('static',filename='js/example.js')}}"></script>
+<body>
+
+{% block content %}
+
+	<h1> CGD </h1>
+	<h2> (CRISPR-Cas Comprehensive scores) </h2><br>
+
+		{% for message in get_flashed_messages() %}
+			<div class = "flash">{{ message }}</div>
+		{% endfor %}
+	
+		{% for message in tform.message.errors %}
+			<div class = "flash">{{ message }}</div>
+        	{% endfor %}
+
+        		<form name = "tform" action = "{{url_for('comprehensive')}}" method = "post">
+                		{{tform.hidden_tag()}}
+
+				{{tform.message.label }}<br>
+				{{tform.message }}<br>
+				{{ tform.submit }}
+
+			 
+			</form>
+			<button style = "display:inline-block;" onclick = "myFunction()">Example</button>
+			<div id ="myDIV" style = "display:none;">
+				<p>>JQ277699.1 Ovis aries LIN28A (LIN28A) mRNA, complete cds<br>ACCCCTTTGCCTCCGGACTTCTCTGGGGCCAGCAGCCGCCCAAGCGAGGGCCCGGGGCCGCGAGCTCAGC<br>AGACTACCATGGGCTCTGTGTCAAACCAGCAGTTCGCAGGTGGCTGCGCTAAGGCGCCGGAGGAAGCGCC<br>GGAGGAGGCGCCGGAGGACGCGGCCCGCGCGGCGGAGGAGCCGCAGCTGCTGCACGGTGCCGGCATCTGT<br>AAGTGGTTCAACGTGCGCATGGGGTTCGGCTTCCTGTCCATGACCGCCCGCGCAGGGGTCGCGCTCGACC<br>CCCCGGTGGATGTCTTTGTGCACCAGAGTAAGCTGCACATGGAGGGCTTCCGGAGCCTGAAGGAGGGGGA<br>GGCTGTGGAGTTCACCTTTAAGAAGTCCGCCAAGGGCCTGGAATCTATCCGAGTCACCGGCCCTGGTGGG<br>GTGTTCTGTATTGGGAGTGAAAGGCGGCCCAAAGGGAAGAATGTGCAGAAACGCAGATCAAAGGGAGACA<br>GGTGCTACAACTGTGGAGGTCTAGACCATCATGCCAAGGAATGCAAACTGCCACCGCAGCCCAAGAAGTG<br>CCATTTCTGCCAGAGCATCAGCCATATGGTAGCCTCGTGCCCACTGAAGGCCCAGCAAGCTCCCAGCTCC</br>CAGGGAAAGCCAGCCTACTTTCGGGAGGAGGAAGAAGAGATCCATAGCTCTGCCATGCTCCCAGAGGCCC<br>AGAATTGAAGCCACAGTGGGTGGGAGCTATCCTTTTGTGATCAGAAAGCTTTGAGGAGCAGCATCAATCG<br>CCTTTGCCTTCGGACTTCTCCGGGGCCAGCAGCCGCCCGACCAGGGGCCCGGGGCCACGGGCTCAGCCGA<br>CGACCATGGGCTCCGTGTCCAACCAGCAGTTTGCAGGTGGCTGCGCCAAGGCGGCAGAAGAGGCGCCCGA<br>
+GGAGGCGCCGGAGGACGCGGCCCGGGCGGCGGACGAGCCTCAGCTGCTGCACGGTGCGGGCATCTGTAAG<br>
+TGGTTCAACGTGCGCATGGGGTTCGGCTTCCTGTCCATGACCGCCCGCGCCGGGGTCGCGCTCGACCCCC<br>
+CAGTGGATGTCTTTGTGCACCAGAGTAAGCTGCACATGGAAGGGTTCCGGAGCTTGAAGGAGGGTGAGGC<br>
+AGTGGAGTTCACCTTTAAGAAGTCAGCCAAGGGTCTGGAATCCATCCGTGTCACCGGACCTGGTGGAGTA<br>
+TTCTGTATTGGGAGTGAGAGGCGGCCAAAAGGAAAGAGCATGCAGAAGCGCAGATCAAAAGGAGACAGGT<br>
+GCTACAACTGTGGAGGTCTAGATCATCATGCCAAGGAATGCAAGCTGCCACCCCAGCCCAAGAAGTGCCA<br></p>
+			</div>
+
+
+	<h3> or upload a FASTA file </h3><br>
+	 
+		{% for message in get_flashed_messages() %}
+                	<div class = "flash">{{ message }}</div>
+        	{% endfor %}
+
+	        {% for message in fform.fastafile.errors %}
+                	<div class = "flash">{{ message }}</div>
+        	{% endfor %}
+
+			<form name = "fform" action = "{{url_for('comprehensive')}}" method = "post" enctype = "multipart/form-data">
+		
+				{{fform.hidden_tag()}}
+
+                        	{{ fform.fastafile.label }}
+                        	{{ fform.fastafile }}<br>
+				{{ fform.scores}} <br>
+             		
+				{{ fform.upload }}
+			</form>
+				
+{% endblock %}
+<script type = "text/javascript" src = "{{url_for('static',filename='js/example.js')}}"></script>
+</body>
+</head>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel = "stylesheet" type = "text/css" href = "{{url_for('static',filename='style.css')}}" >
+<meta name = "viewport" content = "width=device-width, initial-scale = 1">
+<body>	
+<img class = "img-tad" src = "{{url_for('static',filename='Logo_Lab.jpg')}}" height = "80" width = "110" top = "0" style = "position:relative; top:10px; float: left;">
+<img class = "img-lad" src = "{{url_for('static',filename='hanyang.png')}}" height = "80" width = "85" top = "0" style = "position:relative; top:5px; float: right;" > 	
+<h1 class = "title" style = "position: relative; font-family: Times new roman; font-size:25px; color:black; text-align:center;top:30px;"> CGD </h1>
+<h3 class = "res" style = "position: relative; font-family: Times new roman; font-size:25px; color:black; text-align:center; left:10px; top:10px;"> (Comprehensive Guide Designer) </h3> 
+<ul>
+	<li><a> HOME</i></a></li>
+	<li><a href = "{{url_for('comprehensive')}}" target = "_blank">CGD</a></li>
+	<li><a href = "https://coya75.wixsite.com/biglab/contact-us" target = "_blank"> CONTACT US</a> </li>
+	<li><a href = "https://big.hanyang.ac.kr" target = "_blank">BIG LAB</a> </li>
+</ul>
+
+<!-- <img src = "{{url_for('static',filename='CGD_3.png')}}" style = "position:relative" height = "900" width = "700" />-->
+<div class = "sara">
+	<p style = "position: relative; font-family: Times new roman; font-size:25px; color:black; text-align:left;left:15%; top:0.5%;"> CGD is acronym for Comprehensive Guide Designer.</p>
+ 	<p style = "position: relative; font-family: Times new roman; font-size:25px; color:black; text-align:left;left:15%">They contain cluster of scores for all CRISPR-Cas system namely CRISPRi, CRISPRa, Cas9 and Cas12a.
+ 	<p style = "position: relative; font-family: Times new roman; font-size:25px; color:black; text-align:left;left:15%"> Source code could be accessed through github <a href = "https://github.com/vipinmenon1989/CGD" target = "_blank">CGD</a></p>
+</div>
+<img class = "resp" src = "{{url_for('static',filename='CGD_3.png')}}"  style = "position:absolute; bottom:20%; right:79%; height:60%;width:20%;"/>
+<br>
+<div class = "footer">
+	 &copy; 2017-2019 BIGLab | All Rights Reserved | Designed by A Vipin Menon
+</div>
+</body>
+</head>
+</html>

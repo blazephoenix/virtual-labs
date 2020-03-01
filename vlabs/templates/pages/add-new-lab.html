@@ -1,0 +1,45 @@
+{% extends 'layout/base.html' %}
+{% block title %}Add new lab{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="collection with-header">
+        <div class="collection-header">
+            <h2>Submit A Lab</h2>
+            <h5 class="grey-text text-darken-1">Enter lab details</h6>
+        </div>
+        <form method="POST" enctype="multipart/form-data" class="collection-item">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input name="title" type="text" class="validate" placeholder="Name of your Lab">
+                    <label for="title">Title</label>
+                </div>
+                <div class="input-field col s6">
+                    <input name="stream" type="text" class="validate" placeholder="Engineering stream">
+                    <label for="stream">Stream</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s8 input-field">
+                    <textarea name="description" type="textarea" class="validate materialize-textarea" placeholder="Short description"></textarea>
+                    <label>Description</label>
+                </div>
+                <div class="input-field col s4">
+                    <label>Date</label>
+                    <input name="date" type="text" class="datepicker" placeholder="Date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p>Upload Files <small class="grey-text">(Please name the main page of your lab as index.html)</small></p>
+                    <input type='file' name='file[]' multiple='' class="white waves-effect black-text" style="border: 1px solid #E0E0E0; padding: 0.5em"/>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="col s12 center-align">
+                    <input type="submit" value="Upload Lab" class="btn btn-large waves-effect white-text right-align">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

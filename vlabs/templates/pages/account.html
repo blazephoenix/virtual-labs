@@ -1,0 +1,59 @@
+{% extends 'layout/base.html' %}
+{% block title %}Account{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="s12 m6">
+            <div class="card-panel white">
+                <h4>Account Details</h4>
+                <div class="section">
+                    <h5>Email: {{ current_user.email }}</h5>
+                </div>
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="row">
+                        <div class="col s10">
+                          <h4>Labs</h4>
+                        </div>
+                        <div class="col s2 right-align">
+                            <div class="row">
+                                <div class="col s6">
+                                    <h4><a href="{{ url_for('add') }}" class="black-text tooltipped" 
+                                        data-position="top" 
+                                        data-tooltip="Add new lab">
+                                        <i class="small material-icons">add_circle_outline</i>
+                                    </a></h4>
+                                </div>
+                                <div class="col s6">
+                                    <h4><a href="{{ url_for('delete') }}" class="black-text tooltipped" 
+                                        data-position="top" 
+                                        data-tooltip="Remove lab">
+                                        <i class="small material-icons">delete</i>
+                                    </a></h4>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ul class="collection">
+                        {% if current_user.labs|count != 0 %}
+                        {% for lab in current_user.labs %}
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle materialize-red">folder</i>
+                            <h5 style="margin-top: 0; margin-bottom: 0.2em;">{{ lab.title }}</h5>
+                            <p class="grey-text" style="margin-bottom: 1.5em;">{{ lab.stream }} - {{ lab.date_posted.strftime('%b %d, %Y') }}</p>
+                            <p>{{ lab.description }}</p>
+                            <a href="{{ url_for('static', filename='labs/' + lab.lab_url) }}" class="secondary-content"><i
+                                    class="material-icons">call_made</i></a>
+                        </li>
+                        {% endfor %}
+                        {% else %}
+                        <h6 class="grey-text center-align">No labs added yet</h6>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

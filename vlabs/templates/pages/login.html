@@ -1,0 +1,133 @@
+{% extends 'layout/base.html' %}
+{% block title %}Log in/ Register{% endblock %}
+{% block main %}
+<div class="row">
+    <div class="col s12 m4 offset-l4">
+      <h5 class="section">Access your account</h5>
+        <div class="card">
+            <div class="card-tabs">
+              <ul class="tabs tabs-fixed-width grey darken-4">
+                <li class="tab"><a class="active white-text" href="#login">Log in</a></li>
+                <li class="tab"><a class="white-text" href="#signup">Sign up</a></li>
+              </ul>
+            </div>
+            </div>
+            <div class="card-content">
+              <div id="login">
+                <form method="POST" action="">
+                  {{ login_form.hidden_tag() }}
+                    <div class="input-field">
+
+                      {% if login_form.email.errors %}
+
+                        {{ login_form.email(class="validate", type="email") }}
+                        {% for error in login_form.email.errors %}
+                          <span class="helper-text red-text">{{ error }}</span>
+                        {% endfor %}
+
+                      {% else %}
+
+                        {{ login_form.email(class="validate", type="email") }}
+                        {{ login_form.email.label }}
+                        <span class="helper-text">E.g. johndoe@email.com</span>
+                      
+                      {% endif %}
+                        <!-- <input id="email" type="email" class="validate">
+                        <label for="email">Email</label> -->
+                    </div>
+                    <div class="input-field">
+
+                      {% if login_form.password.errors %}
+
+                        {{ login_form.password(class="validate", type="password") }}
+                        {% for error in login_form.password.errors %}
+                          <span class="helper-text">{{ error }}</span>
+                        {% endfor %}
+
+                      {% else %}
+
+                        {{ login_form.password(class="validate", type="password") }}
+                        {{ login_form.password.label }}
+
+                      {% endif %} 
+                        <!-- <input id="password" type="password" class="validate">
+                        <label for="password">Password</label> -->
+                    </div>
+                    {{ login_form.submit(class="btn waves-effect white-text") }}
+                    <!-- <button class="btn waves-effect">Log in</button>--><br>
+                    <a class="grey-text" href="#"><small>Forgot password?</small></a>
+                </form>
+              </div>
+              <div id="signup">
+                <form method="POST" action="">
+                  {{ register_form.hidden_tag() }}
+                    <!-- <div class="input-field">
+                        <input id="username" type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div> -->
+                    <div class="input-field">
+
+                      {% if register_form.email.errors %}
+
+                        {{ register_form.email(class="validate", type="email") }}
+                        {% for error in register_form.email.errors %}
+                          <span class="helper-text">{{ error }}</span>
+                        {% endfor %}
+                        
+                      {% else %}
+
+                      {{ register_form.email(class="validate", type="email") }}
+                      {{ register_form.email.label }}
+                      <span class="helper-text">E.g. johndoe@email.com</span>
+
+                      {% endif %}
+                        <!-- <input id="email" type="email" class="validate">
+                        <label for="email">Email</label> -->
+                    </div>
+                    <div class="input-field">
+
+                      {% if register_form.password.errors %}
+
+                        {{ register_form.password(class="validate", type="password") }}
+                        {% for error in register_form.password.errors %}
+                          <span class="helper-text">{{ error }}</span>
+                        {% endfor %}
+
+                      {% else %}
+ 
+                        {{ register_form.password(class="validate", type="password") }}
+                        {{ register_form.password.label }}
+                        <span class="helper-text">Min. 5 characters</span>
+
+                      {% endif %}
+                        <!-- <input id="password" type="password" class="validate">
+                        <label for="password">Password</label> -->
+                    </div>
+                    <div class="input-field">
+
+                      {% if register_form.confirm_password.errors %}
+
+                        {{ register_form.confirm_password(class="validate", type="password") }}
+                        {% for error in register_form.confirm_password.errors %}
+                          <span class="helper-text">{{ error }}</span>
+                        {% endfor %}
+
+                      {% else %}
+
+                        {{ register_form.confirm_password(class="validate", type="password") }}
+                        {{ register_form.confirm_password.label }}
+                        <span class="helper-text">Same as password</span>
+
+                      {% endif %}
+                        <!-- <input id="password2" type="password" class="validate">
+                        <label for="password2">Confirm password</label> -->
+                    </div>
+                      {{ register_form.submit(class="btn waves-effect white-text") }}
+                    <!-- <button class="btn waves-effect">Sign up</button><br> -->
+                </form>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}

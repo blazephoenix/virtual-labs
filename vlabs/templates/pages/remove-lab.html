@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+{% block title %}Delete Lab{% endblock %}
+{% block main %}
+<div class="container">
+  <div class="row">
+    <div class="col s6">
+      <h2>Delete Lab</h2>
+      <h5 class="grey-text text-darken-1">Pick lab to delete</h5>
+    </div>
+  </div>
+</div>
+<div class="container section">
+  <ul class="collection">
+    {% if current_user.labs|count != 0 %}
+    {% for lab in current_user.labs %}
+    <li class="collection-item avatar">
+      <i class="material-icons circle materialize-red">folder</i>
+      <h4 style="margin-top: 0; margin-bottom: 0.2em;">{{ lab.title }}</h4>
+      <p class="grey-text" style="margin-bottom: 1.5em;">{{ lab.stream }} - {{ lab.date_posted.strftime('%b %d, %Y') }}</p>
+      <p>{{ lab.description }}</p>
+      <a href="{{ url_for('delete_lab', lab_id=lab.id) }}" class="secondary-content red-text text-darken-1"><i class="small material-icons">delete</i></a>
+    </li>
+    {% endfor %}
+    {% else %}
+    <h6 class="grey-text center-align">No labs to delete</h6>
+    {% endif %}
+  </ul>
+</div>
+{% endblock main %}
