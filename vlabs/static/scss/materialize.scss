@@ -41,7 +41,8 @@
 @import "components/timepicker";
 
 .tabs .indicator{
-    @extend .white;
+    @extend .orange, .lighten-3;
+    height: 6%;
 }
 
 .tabs .tab a:focus, .tabs .tab a:focus.active {
