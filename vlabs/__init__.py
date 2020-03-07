@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 from vlabs.config import BaseConfig, Development, Production
 
+# CHANGE TO PRODUCTION ON PRODUCTION DEPLOY
 app.config.from_object(Development)
 
 db = SQLAlchemy(app)
