@@ -5,8 +5,9 @@
         <div class="section">
             <h1>403 - Forbidden</h1>
             <h4>Permission denied.</h4>
-            <p class="grey-text">You don't have the permission to access the requested resource.</p>
-            <p class="grey-text">It is either read protected or not readable by the server.</p>
+            <p class="grey-text">{{ error }}</p>
+            <!-- <p class="grey-text">You don't have the permission to access the requested resource.</p>
+            <p class="grey-text">It is either read protected or not readable by the server.</p> -->
             <a class="materialize-red-text" style="text-decoration: underline;" href="{{ url_for('home') }}">Go back</a>
         </div>
     </div>

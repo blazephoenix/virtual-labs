@@ -6,7 +6,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.utils import secure_filename
 from sqlalchemy import exc
 import os, shutil
-import datetime
 
 @app.route('/')
 @app.route('/home')
@@ -34,21 +33,21 @@ def login():
                 new_account = Account(email=register_form.email.data, password=hashed_password)
                 db.session.add(new_account)
                 db.session.commit()
-                flash(f'New account created, you can now log in', 'green')
+                flash('New account created, you can now log in', 'green')
                 return redirect(url_for('login'))
             except exc.IntegrityError as e:
                 db.session().rollback()
-                flash(f'Email already exists! Please try a different one', 'red darken-3')
+                flash('Email already exists! Please try a different one', 'red darken-3')
                 return redirect(url_for('login'))
 
     if login_form.validate_on_submit():
         account = Account.query.filter_by(email=login_form.email.data).first()
         if account and bcrypt.check_password_hash(account.password, login_form.password.data):
             login_user(account)
-            flash(f'Logged in successfully, {login_form.email.data}', 'green')
+            flash('Logged in successfully, %s' % {login_form.email.data}, 'green')
             return redirect(url_for('account'))
         else:
-            flash(f'Login unsuccessful. Please check email and/or password and try again.', 'red darken-3')
+            flash('Login unsuccessful. Please check email and/or password and try again.', 'red darken-3')
             return redirect(url_for('login'))
 
     return render_template('pages/login.html', login_form=login_form, register_form=register_form)
@@ -83,7 +82,7 @@ def add():
             if not os.path.exists(path):
                 os.makedirs(path)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], directory_name, filename))
-        flash(f'Successfully uploaded!', 'green')
+        flash('Successfully uploaded!', 'green')
         return redirect(url_for('add'))
     else:
         return render_template('pages/add-new-lab.html')
@@ -101,7 +100,7 @@ def delete():
 def delete_lab(lab_id):
     lab = Lab.query.get_or_404(lab_id)
     if lab.author != current_user:
-        return redirect(url_for('account'))
+        abort(403)
     if request.method=='POST':
         if lab.author != current_user:
             abort(403)
@@ -112,7 +111,7 @@ def delete_lab(lab_id):
             shutil.rmtree(path, ignore_errors=True)
             db.session.delete(lab)
             db.session.commit()
-            flash(f'Deleted lab - {lab.title}','green')
+            flash('Deleted lab - %s' % {lab.title},'green')
             return redirect(url_for('delete'))
     return render_template('pages/lab-single.html', lab=lab)
 
@@ -125,17 +124,17 @@ def simulation():
 @app.route('/logout')
 def logout():
     logout_user()
-    flash(f'Logged out successfully', 'green')
+    flash('Logged out successfully', 'green')
     return redirect(url_for('login'))
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('pages/errors/404.html')
+    return render_template('pages/errors/404.html', error = str(e))
 
 @app.errorhandler(403)
 def no_permission(e):
-    return render_template('pages/errors/403.html')
+    return render_template('pages/errors/403.html', error = str(e))
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('pages/errors/500.html')
+    return render_template('pages/errors/500.html', error = str(e))

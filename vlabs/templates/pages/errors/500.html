@@ -5,8 +5,9 @@
         <div class="section">
             <h1>500 - Internal server error</h1>
             <h4>Unable to complete request</h4>
-            <p class="grey-text">The server an internal error or misconfiguration and was unable to complete your request.</p>
-            <p class="grey-text">More information may be available in the server log.</p>
+            <p class="grey-text">{{ error }}</p>
+            <!-- <p class="grey-text">The server an internal error or misconfiguration and was unable to complete your request.</p>
+            <p class="grey-text">More information may be available in the server log.</p> -->
             <a class="materialize-red-text" style="text-decoration: underline;" href="{{ url_for('home') }}">Go back</a>
         </div>
     </div>

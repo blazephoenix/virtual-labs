@@ -13,7 +13,7 @@ class Account(db.Model, UserMixin):
     labs = db.relationship('Lab', backref='author', lazy=True)
 
     def __repr__(self):
-        return f'Account details : {self.email} {self.labs}'
+        return 'Account details : {0}{1}'.format(self.email, self.labs)
 
 class Lab(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,4 +25,4 @@ class Lab(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     
     def __repr__(self):
-        return f'Lab details : {self.title} posted on {self.date_posted}'
+        return 'Labs details:'.format(self.title, self.date_posted)
